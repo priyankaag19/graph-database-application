@@ -218,9 +218,6 @@ transit line; teal means "already have it," amber means "gap to close,"
 with the top 2 recommended courses attached directly to each gap station.
 Loading, empty, and error states are all designed, not left as blank divs.
 
-Screenshots: see `docs/screenshots/` (add your own after running the app
-against your instance) and the screen recording linked in the submission
-email.
 
 ---
 
