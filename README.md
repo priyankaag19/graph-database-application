@@ -123,7 +123,7 @@ skillpath/
 ### 2. Configure the app
 
 ```bash
-git clone <this-repo-url>
+git clone https://github.com/priyankaag19/graph-database-application.git
 cd skillpath
 cp .env
 ```
