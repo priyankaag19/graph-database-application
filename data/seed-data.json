@@ -1,0 +1,157 @@
+{
+  "companies": [
+    { "id": "co-nimbus", "name": "Nimbus Retail", "industry": "E-commerce" },
+    { "id": "co-forge", "name": "Forge Analytics", "industry": "Data" },
+    { "id": "co-arcline", "name": "Arcline Health", "industry": "Healthtech" },
+    { "id": "co-pebble", "name": "Pebble Studio", "industry": "Design" },
+    { "id": "co-vaultwise", "name": "VaultWise", "industry": "Fintech" }
+  ],
+
+  "skills": [
+    { "id": "sk-html", "name": "HTML/CSS", "category": "Frontend" },
+    { "id": "sk-js", "name": "JavaScript", "category": "Frontend" },
+    { "id": "sk-react", "name": "React", "category": "Frontend" },
+    { "id": "sk-ux", "name": "UX Design", "category": "Design" },
+    { "id": "sk-node", "name": "Node.js", "category": "Backend" },
+    { "id": "sk-python", "name": "Python", "category": "Backend" },
+    { "id": "sk-sql", "name": "SQL", "category": "Data" },
+    { "id": "sk-cypher", "name": "Cypher / Graph Query", "category": "Data" },
+    { "id": "sk-api", "name": "REST API Design", "category": "Backend" },
+    { "id": "sk-docker", "name": "Docker", "category": "DevOps" },
+    { "id": "sk-k8s", "name": "Kubernetes", "category": "DevOps" },
+    { "id": "sk-ci", "name": "CI/CD", "category": "DevOps" },
+    { "id": "sk-cloud", "name": "Cloud Infrastructure (AWS/GCP)", "category": "DevOps" },
+    { "id": "sk-datamodel", "name": "Data Modeling", "category": "Data" },
+    { "id": "sk-ml", "name": "Machine Learning", "category": "Data" },
+    { "id": "sk-stats", "name": "Statistics", "category": "Data" },
+    { "id": "sk-pandas", "name": "Pandas / Data Wrangling", "category": "Data" },
+    { "id": "sk-figma", "name": "Figma", "category": "Design" },
+    { "id": "sk-userresearch", "name": "User Research", "category": "Design" },
+    { "id": "sk-leadership", "name": "Team Leadership", "category": "Soft Skills" },
+    { "id": "sk-comm", "name": "Stakeholder Communication", "category": "Soft Skills" },
+    { "id": "sk-projmgmt", "name": "Project Management", "category": "Soft Skills" },
+    { "id": "sk-testing", "name": "Automated Testing", "category": "Backend" },
+    { "id": "sk-security", "name": "Application Security", "category": "Backend" },
+    { "id": "sk-graphdb", "name": "Graph Database Design", "category": "Data" }
+  ],
+
+  "skillRelations": [
+    { "from": "sk-html", "to": "sk-js", "type": "PREREQUISITE_OF", "strength": 0.9 },
+    { "from": "sk-js", "to": "sk-react", "type": "PREREQUISITE_OF", "strength": 0.9 },
+    { "from": "sk-js", "to": "sk-node", "type": "PREREQUISITE_OF", "strength": 0.8 },
+    { "from": "sk-node", "to": "sk-api", "type": "PREREQUISITE_OF", "strength": 0.85 },
+    { "from": "sk-sql", "to": "sk-datamodel", "type": "PREREQUISITE_OF", "strength": 0.7 },
+    { "from": "sk-datamodel", "to": "sk-graphdb", "type": "PREREQUISITE_OF", "strength": 0.75 },
+    { "from": "sk-sql", "to": "sk-cypher", "type": "RELATED_TO", "strength": 0.6 },
+    { "from": "sk-cypher", "to": "sk-graphdb", "type": "PREREQUISITE_OF", "strength": 0.9 },
+    { "from": "sk-python", "to": "sk-pandas", "type": "PREREQUISITE_OF", "strength": 0.85 },
+    { "from": "sk-pandas", "to": "sk-stats", "type": "RELATED_TO", "strength": 0.6 },
+    { "from": "sk-stats", "to": "sk-ml", "type": "PREREQUISITE_OF", "strength": 0.8 },
+    { "from": "sk-python", "to": "sk-ml", "type": "PREREQUISITE_OF", "strength": 0.7 },
+    { "from": "sk-docker", "to": "sk-k8s", "type": "PREREQUISITE_OF", "strength": 0.85 },
+    { "from": "sk-docker", "to": "sk-ci", "type": "RELATED_TO", "strength": 0.6 },
+    { "from": "sk-ci", "to": "sk-cloud", "type": "RELATED_TO", "strength": 0.55 },
+    { "from": "sk-k8s", "to": "sk-cloud", "type": "RELATED_TO", "strength": 0.7 },
+    { "from": "sk-ux", "to": "sk-figma", "type": "PREREQUISITE_OF", "strength": 0.8 },
+    { "from": "sk-userresearch", "to": "sk-ux", "type": "PREREQUISITE_OF", "strength": 0.75 },
+    { "from": "sk-figma", "to": "sk-react", "type": "RELATED_TO", "strength": 0.4 },
+    { "from": "sk-projmgmt", "to": "sk-leadership", "type": "RELATED_TO", "strength": 0.6 },
+    { "from": "sk-comm", "to": "sk-leadership", "type": "RELATED_TO", "strength": 0.5 },
+    { "from": "sk-api", "to": "sk-security", "type": "RELATED_TO", "strength": 0.5 },
+    { "from": "sk-testing", "to": "sk-ci", "type": "RELATED_TO", "strength": 0.5 },
+    { "from": "sk-node", "to": "sk-testing", "type": "RELATED_TO", "strength": 0.4 },
+    { "from": "sk-graphdb", "to": "sk-ml", "type": "RELATED_TO", "strength": 0.3 }
+  ],
+
+  "courses": [
+    { "id": "cr-js101", "name": "Modern JavaScript Fundamentals", "provider": "Coursera", "url": "https://coursera.org/js101", "durationHours": 20, "teaches": [{ "skillId": "sk-js", "depth": "foundational" }] },
+    { "id": "cr-react201", "name": "React for Production", "provider": "Frontend Masters", "url": "https://frontendmasters.com/react201", "durationHours": 15, "teaches": [{ "skillId": "sk-react", "depth": "intermediate" }] },
+    { "id": "cr-node201", "name": "Node.js & REST APIs", "provider": "Udemy", "url": "https://udemy.com/node201", "durationHours": 18, "teaches": [{ "skillId": "sk-node", "depth": "intermediate" }, { "skillId": "sk-api", "depth": "intermediate" }] },
+    { "id": "cr-cypher101", "name": "Graph Databases & Cypher in Practice", "provider": "CognoDB Academy", "url": "https://cognodb.com/academy/cypher101", "durationHours": 10, "teaches": [{ "skillId": "sk-cypher", "depth": "foundational" }, { "skillId": "sk-graphdb", "depth": "foundational" }] },
+    { "id": "cr-datamodel", "name": "Practical Data Modeling", "provider": "edX", "url": "https://edx.org/datamodel", "durationHours": 12, "teaches": [{ "skillId": "sk-datamodel", "depth": "intermediate" }] },
+    { "id": "cr-ml101", "name": "Machine Learning Foundations", "provider": "Coursera", "url": "https://coursera.org/ml101", "durationHours": 40, "teaches": [{ "skillId": "sk-ml", "depth": "foundational" }, { "skillId": "sk-stats", "depth": "foundational" }] },
+    { "id": "cr-pandas", "name": "Data Wrangling with Pandas", "provider": "DataCamp", "url": "https://datacamp.com/pandas", "durationHours": 8, "teaches": [{ "skillId": "sk-pandas", "depth": "foundational" }] },
+    { "id": "cr-docker101", "name": "Docker & Container Fundamentals", "provider": "Udemy", "url": "https://udemy.com/docker101", "durationHours": 10, "teaches": [{ "skillId": "sk-docker", "depth": "foundational" }] },
+    { "id": "cr-k8s201", "name": "Kubernetes in Production", "provider": "Linux Foundation", "url": "https://lf.org/k8s201", "durationHours": 25, "teaches": [{ "skillId": "sk-k8s", "depth": "intermediate" }] },
+    { "id": "cr-cloud101", "name": "AWS Cloud Practitioner", "provider": "AWS Training", "url": "https://aws.training/cloud101", "durationHours": 16, "teaches": [{ "skillId": "sk-cloud", "depth": "foundational" }] },
+    { "id": "cr-figma101", "name": "UI Design with Figma", "provider": "Skillshare", "url": "https://skillshare.com/figma101", "durationHours": 9, "teaches": [{ "skillId": "sk-figma", "depth": "foundational" }] },
+    { "id": "cr-leadership", "name": "Leading Engineering Teams", "provider": "LinkedIn Learning", "url": "https://linkedin.com/learning/leadership", "durationHours": 6, "teaches": [{ "skillId": "sk-leadership", "depth": "intermediate" }] }
+  ],
+
+  "jobs": [
+    { "id": "job-frontend", "title": "Frontend Engineer", "level": "Mid", "requires": [
+      { "skillId": "sk-html", "importance": 3 }, { "skillId": "sk-js", "importance": 5 }, { "skillId": "sk-react", "importance": 5 }, { "skillId": "sk-testing", "importance": 2 }
+    ]},
+    { "id": "job-backend", "title": "Backend Engineer", "level": "Mid", "requires": [
+      { "skillId": "sk-node", "importance": 5 }, { "skillId": "sk-api", "importance": 5 }, { "skillId": "sk-sql", "importance": 4 }, { "skillId": "sk-testing", "importance": 3 }, { "skillId": "sk-security", "importance": 2 }
+    ]},
+    { "id": "job-fullstack", "title": "Full-Stack Engineer", "level": "Senior", "requires": [
+      { "skillId": "sk-js", "importance": 5 }, { "skillId": "sk-react", "importance": 4 }, { "skillId": "sk-node", "importance": 4 }, { "skillId": "sk-api", "importance": 4 }, { "skillId": "sk-sql", "importance": 3 }
+    ]},
+    { "id": "job-dataeng", "title": "Data Engineer", "level": "Mid", "requires": [
+      { "skillId": "sk-python", "importance": 5 }, { "skillId": "sk-sql", "importance": 5 }, { "skillId": "sk-datamodel", "importance": 4 }, { "skillId": "sk-pandas", "importance": 4 }, { "skillId": "sk-cloud", "importance": 2 }
+    ]},
+    { "id": "job-graphdev", "title": "Graph Database Engineer", "level": "Senior", "requires": [
+      { "skillId": "sk-cypher", "importance": 5 }, { "skillId": "sk-graphdb", "importance": 5 }, { "skillId": "sk-datamodel", "importance": 4 }, { "skillId": "sk-node", "importance": 2 }
+    ]},
+    { "id": "job-mle", "title": "Machine Learning Engineer", "level": "Senior", "requires": [
+      { "skillId": "sk-python", "importance": 5 }, { "skillId": "sk-ml", "importance": 5 }, { "skillId": "sk-stats", "importance": 4 }, { "skillId": "sk-pandas", "importance": 3 }, { "skillId": "sk-cloud", "importance": 2 }
+    ]},
+    { "id": "job-devops", "title": "DevOps Engineer", "level": "Mid", "requires": [
+      { "skillId": "sk-docker", "importance": 5 }, { "skillId": "sk-k8s", "importance": 5 }, { "skillId": "sk-ci", "importance": 4 }, { "skillId": "sk-cloud", "importance": 4 }
+    ]},
+    { "id": "job-emanager", "title": "Engineering Manager", "level": "Lead", "requires": [
+      { "skillId": "sk-leadership", "importance": 5 }, { "skillId": "sk-comm", "importance": 4 }, { "skillId": "sk-projmgmt", "importance": 4 }, { "skillId": "sk-node", "importance": 2 }
+    ]}
+  ],
+
+  "people": [
+    { "id": "p-anita", "name": "Anita Verma", "bio": "Started in support, taught herself JavaScript on nights and weekends.", "currentTitle": "Junior Frontend Developer", "worksAt": "co-nimbus",
+      "skills": [{ "skillId": "sk-html", "level": "advanced", "yearsExperience": 2 }, { "skillId": "sk-js", "level": "intermediate", "yearsExperience": 1 }],
+      "transitions": [{ "jobId": "job-frontend", "date": "2024-03-01" }] },
+
+    { "id": "p-devraj", "name": "Devraj Nair", "bio": "Former data analyst who moved into data engineering.", "currentTitle": "Data Engineer", "worksAt": "co-forge",
+      "skills": [{ "skillId": "sk-sql", "level": "advanced", "yearsExperience": 5 }, { "skillId": "sk-python", "level": "advanced", "yearsExperience": 3 }, { "skillId": "sk-pandas", "level": "advanced", "yearsExperience": 3 }, { "skillId": "sk-datamodel", "level": "intermediate", "yearsExperience": 2 }],
+      "transitions": [{ "jobId": "job-dataeng", "date": "2023-06-01" }] },
+
+    { "id": "p-fatima", "name": "Fatima Rahman", "bio": "Backend engineer who picked up graph modeling for a fraud-detection project.", "currentTitle": "Graph Database Engineer", "worksAt": "co-vaultwise",
+      "skills": [{ "skillId": "sk-sql", "level": "advanced", "yearsExperience": 6 }, { "skillId": "sk-cypher", "level": "advanced", "yearsExperience": 2 }, { "skillId": "sk-graphdb", "level": "advanced", "yearsExperience": 2 }, { "skillId": "sk-datamodel", "level": "advanced", "yearsExperience": 5 }, { "skillId": "sk-node", "level": "intermediate", "yearsExperience": 4 }],
+      "transitions": [{ "jobId": "job-backend", "date": "2019-01-15" }, { "jobId": "job-graphdev", "date": "2023-09-01" }] },
+
+    { "id": "p-oliver", "name": "Oliver Sachs", "bio": "Statistician who transitioned into applied ML.", "currentTitle": "ML Engineer", "worksAt": "co-arcline",
+      "skills": [{ "skillId": "sk-stats", "level": "advanced", "yearsExperience": 6 }, { "skillId": "sk-python", "level": "advanced", "yearsExperience": 4 }, { "skillId": "sk-ml", "level": "advanced", "yearsExperience": 3 }, { "skillId": "sk-pandas", "level": "intermediate", "yearsExperience": 3 }],
+      "transitions": [{ "jobId": "job-mle", "date": "2022-11-01" }] },
+
+    { "id": "p-priya", "name": "Priya Menon", "bio": "UX researcher moving toward product design.", "currentTitle": "UX Designer", "worksAt": "co-pebble",
+      "skills": [{ "skillId": "sk-userresearch", "level": "advanced", "yearsExperience": 4 }, { "skillId": "sk-ux", "level": "advanced", "yearsExperience": 4 }, { "skillId": "sk-figma", "level": "advanced", "yearsExperience": 3 }],
+      "transitions": [{ "jobId": "job-emanager", "date": "2021-01-01" }] },
+
+    { "id": "p-samuel", "name": "Samuel Otieno", "bio": "Sysadmin who grew into platform engineering.", "currentTitle": "DevOps Engineer", "worksAt": "co-forge",
+      "skills": [{ "skillId": "sk-docker", "level": "advanced", "yearsExperience": 4 }, { "skillId": "sk-k8s", "level": "advanced", "yearsExperience": 3 }, { "skillId": "sk-ci", "level": "advanced", "yearsExperience": 4 }, { "skillId": "sk-cloud", "level": "advanced", "yearsExperience": 4 }],
+      "transitions": [{ "jobId": "job-devops", "date": "2021-08-01" }] },
+
+    { "id": "p-lucia", "name": "Lucia Ferrer", "bio": "Full-stack engineer with 7 years across startups.", "currentTitle": "Senior Full-Stack Engineer", "worksAt": "co-nimbus",
+      "skills": [{ "skillId": "sk-js", "level": "advanced", "yearsExperience": 7 }, { "skillId": "sk-react", "level": "advanced", "yearsExperience": 5 }, { "skillId": "sk-node", "level": "advanced", "yearsExperience": 6 }, { "skillId": "sk-api", "level": "advanced", "yearsExperience": 6 }, { "skillId": "sk-sql", "level": "intermediate", "yearsExperience": 5 }],
+      "transitions": [{ "jobId": "job-frontend", "date": "2018-04-01" }, { "jobId": "job-fullstack", "date": "2021-05-01" }] },
+
+    { "id": "p-ken", "name": "Ken Watanabe", "bio": "Backend engineer eyeing an engineering management track.", "currentTitle": "Backend Engineer", "worksAt": "co-vaultwise",
+      "skills": [{ "skillId": "sk-node", "level": "advanced", "yearsExperience": 5 }, { "skillId": "sk-api", "level": "advanced", "yearsExperience": 5 }, { "skillId": "sk-sql", "level": "intermediate", "yearsExperience": 4 }, { "skillId": "sk-comm", "level": "intermediate", "yearsExperience": 2 }, { "skillId": "sk-projmgmt", "level": "intermediate", "yearsExperience": 2 }],
+      "transitions": [{ "jobId": "job-backend", "date": "2020-02-01" }] },
+
+    { "id": "p-heena", "name": "Heena Kapoor", "bio": "Data analyst learning Python to move into data engineering.", "currentTitle": "Data Analyst", "worksAt": "co-forge",
+      "skills": [{ "skillId": "sk-sql", "level": "advanced", "yearsExperience": 3 }, { "skillId": "sk-python", "level": "beginner", "yearsExperience": 1 }],
+      "transitions": [] },
+
+    { "id": "p-marcus", "name": "Marcus Webb", "bio": "Frontend developer exploring backend work to go full-stack.", "currentTitle": "Frontend Developer", "worksAt": "co-pebble",
+      "skills": [{ "skillId": "sk-html", "level": "advanced", "yearsExperience": 3 }, { "skillId": "sk-js", "level": "advanced", "yearsExperience": 3 }, { "skillId": "sk-react", "level": "advanced", "yearsExperience": 2 }],
+      "transitions": [{ "jobId": "job-frontend", "date": "2022-01-01" }] },
+
+    { "id": "p-noor", "name": "Noor Siddiqui", "bio": "Engineering manager, former backend lead.", "currentTitle": "Engineering Manager", "worksAt": "co-arcline",
+      "skills": [{ "skillId": "sk-leadership", "level": "advanced", "yearsExperience": 4 }, { "skillId": "sk-comm", "level": "advanced", "yearsExperience": 6 }, { "skillId": "sk-projmgmt", "level": "advanced", "yearsExperience": 5 }, { "skillId": "sk-node", "level": "intermediate", "yearsExperience": 6 }],
+      "transitions": [{ "jobId": "job-backend", "date": "2017-01-01" }, { "jobId": "job-emanager", "date": "2022-03-01" }] },
+
+    { "id": "p-tariq", "name": "Tariq Aziz", "bio": "SQL-heavy analyst curious about graph databases.", "currentTitle": "Business Analyst", "worksAt": "co-vaultwise",
+      "skills": [{ "skillId": "sk-sql", "level": "advanced", "yearsExperience": 4 }, { "skillId": "sk-datamodel", "level": "beginner", "yearsExperience": 1 }],
+      "transitions": [] }
+  ]
+}

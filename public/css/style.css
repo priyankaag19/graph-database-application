@@ -1,0 +1,261 @@
+/* SkillPath — visual theme: a night-map / route planner.
+   Palette is deliberately cartographic (deep indigo + brass) rather than
+   the generic cream+terracotta or black+neon defaults. Amber marks "gap",
+   teal marks "already have it" — color carries meaning, not just mood. */
+
+:root {
+  --bg: #10142A;
+  --bg-raised: #171C39;
+  --bg-raised-2: #1F2548;
+  --line: #313866;
+  --text: #ECE9E0;
+  --text-muted: #9098C4;
+  --brass: #C9A24B;
+  --brass-soft: #4A3F22;
+  --teal: #52B8A8;
+  --teal-soft: #16302C;
+  --amber: #E0863F;
+  --amber-soft: #3A2717;
+
+  --font-display: 'Fraunces', serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --radius: 10px;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  background-image:
+    radial-gradient(circle at 15% 0%, rgba(201, 162, 75, 0.07), transparent 40%),
+    radial-gradient(circle at 85% 20%, rgba(82, 184, 168, 0.06), transparent 35%);
+  color: var(--text);
+  font-family: var(--font-body);
+  line-height: 1.5;
+}
+
+a { color: var(--brass); }
+
+/* ---- topbar ------------------------------------------------------- */
+.topbar {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 1.5rem clamp(1.25rem, 4vw, 3rem);
+  border-bottom: 1px solid var(--line);
+  flex-wrap: wrap;
+}
+.brand { display: flex; align-items: center; gap: 0.5rem; }
+.brand-mark { color: var(--brass); font-size: 1.4rem; }
+.brand-name { font-family: var(--font-display); font-size: 1.4rem; font-weight: 600; letter-spacing: 0.01em; }
+.tagline { color: var(--text-muted); font-size: 0.9rem; margin: 0; flex: 1; }
+.db-status {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  color: var(--text-muted);
+}
+.db-status[data-state="ok"] { color: var(--teal); border-color: var(--teal-soft); background: var(--teal-soft); }
+.db-status[data-state="down"] { color: var(--amber); border-color: var(--amber-soft); background: var(--amber-soft); }
+
+main { max-width: 980px; margin: 0 auto; padding: 0 clamp(1.25rem, 4vw, 3rem) 4rem; }
+
+/* ---- planner -------------------------------------------------------- */
+.planner { padding: 3rem 0 2rem; }
+.planner h1 {
+  font-family: var(--font-display);
+  font-size: clamp(1.9rem, 4vw, 2.6rem);
+  font-weight: 500;
+  margin: 0 0 0.5rem;
+}
+.section-lede { color: var(--text-muted); max-width: 60ch; margin: 0 0 1.75rem; }
+.section-lede.small { font-size: 0.88rem; margin-bottom: 1rem; }
+
+.planner-form {
+  display: flex;
+  align-items: end;
+  gap: 1rem;
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  flex-wrap: wrap;
+}
+.field { display: flex; flex-direction: column; gap: 0.4rem; flex: 1; min-width: 200px; }
+.field label { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); }
+
+select {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  padding: 0.65rem 0.75rem;
+  background: var(--bg-raised-2);
+  color: var(--text);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+}
+select:focus-visible, button:focus-visible, input:focus-visible {
+  outline: 2px solid var(--brass);
+  outline-offset: 2px;
+}
+
+.route-glyph { color: var(--brass); opacity: 0.8; padding-bottom: 0.7rem; }
+
+.btn-primary, .btn-secondary {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.92rem;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  padding: 0.72rem 1.4rem;
+}
+.btn-primary { background: var(--brass); color: #1A1305; }
+.btn-primary:hover { filter: brightness(1.08); }
+.btn-secondary { background: transparent; border: 1px solid var(--line); color: var(--text); padding: 0.5rem 1rem; font-size: 0.85rem; }
+.btn-secondary:hover { border-color: var(--brass); color: var(--brass); }
+
+/* ---- state panels ---------------------------------------------------- */
+.state-panel {
+  border: 1px dashed var(--line);
+  border-radius: var(--radius);
+  padding: 2.5rem;
+  text-align: center;
+  color: var(--text-muted);
+  margin-top: 1rem;
+}
+.state-error { border-color: var(--amber-soft); color: var(--amber); background: var(--amber-soft); }
+.spinner {
+  width: 22px; height: 22px; margin: 0 auto 0.9rem;
+  border: 3px solid var(--line); border-top-color: var(--brass);
+  border-radius: 50%; animation: spin 0.8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ---- results ---------------------------------------------------------- */
+.results { padding-top: 1rem; }
+.results-summary { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 2rem; }
+.match-dial {
+  width: 78px; height: 78px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  border: 3px solid var(--brass);
+  font-family: var(--font-mono); font-size: 1.15rem; font-weight: 500;
+  flex-shrink: 0;
+  background: var(--bg-raised);
+}
+h2 { font-family: var(--font-display); font-weight: 500; margin: 0 0 0.25rem; font-size: 1.5rem; }
+h3 { font-family: var(--font-display); font-weight: 500; font-size: 1.15rem; margin: 0 0 0.25rem; }
+
+/* route track: a horizontal transit line of required-skill "stations" */
+.route-track {
+  position: relative;
+  display: flex;
+  gap: 0;
+  overflow-x: auto;
+  padding: 2.2rem 0.5rem 1.5rem;
+  margin-bottom: 2.5rem;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.station {
+  position: relative;
+  flex: 0 0 168px;
+  padding: 0 0.9rem;
+}
+.station::before {
+  content: "";
+  position: absolute;
+  top: -1.35rem; left: 0; right: 0;
+  height: 2px;
+  background: var(--line);
+}
+.station:first-child::before { left: 50%; }
+.station:last-child::before { right: 50%; }
+.station-dot {
+  position: absolute;
+  top: -1.55rem; left: 50%;
+  transform: translateX(-50%);
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  border: 2px solid var(--bg);
+}
+.station.has .station-dot { background: var(--teal); }
+.station.gap .station-dot { background: var(--amber); }
+.station-importance {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  display: block;
+  margin-bottom: 0.15rem;
+}
+.station-name { font-weight: 600; font-size: 0.92rem; display: block; margin-bottom: 0.3rem; }
+.station-tag {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-family: var(--font-mono);
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  margin-bottom: 0.5rem;
+}
+.station.has .station-tag { background: var(--teal-soft); color: var(--teal); }
+.station.gap .station-tag { background: var(--amber-soft); color: var(--amber); }
+.station-courses { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.3rem; }
+.station-courses li { font-size: 0.78rem; }
+.station-courses a { text-decoration: none; }
+.station-courses a:hover { text-decoration: underline; }
+.course-depth { color: var(--text-muted); font-size: 0.7rem; }
+
+/* two-column secondary results */
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+@media (max-width: 720px) { .two-col { grid-template-columns: 1fr; } }
+
+.transition-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.75rem; }
+.transition-list li {
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 0.75rem 0.9rem;
+}
+.t-name { font-weight: 600; }
+.t-meta { color: var(--text-muted); font-size: 0.82rem; display: block; margin: 0.15rem 0 0.4rem; }
+.t-skills { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+.chip {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  background: var(--teal-soft);
+  color: var(--teal);
+  padding: 0.18rem 0.5rem;
+  border-radius: 999px;
+}
+
+.skill-path-form { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 1rem; flex-wrap: wrap; }
+.skill-path-form select { flex: 1; min-width: 130px; }
+.skill-path-result { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem; }
+.path-node {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  background: var(--bg-raised-2);
+  border: 1px solid var(--line);
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
+}
+.path-arrow { color: var(--brass); }
+
+.page-footer {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  padding: 2rem 1rem;
+  border-top: 1px solid var(--line);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .spinner { animation: none; border-top-color: var(--line); }
+}

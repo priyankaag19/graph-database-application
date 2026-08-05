@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SkillPath — plan your route to your next role</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-mark" aria-hidden="true">✺</span>
+    <span class="brand-name">SkillPath</span>
+  </div>
+  <p class="tagline">A route planner for careers, built on a graph.</p>
+  <div id="dbStatus" class="db-status" role="status" aria-live="polite">checking connection…</div>
+</header>
+
+<main>
+
+  <!-- ROUTE PLANNER ---------------------------------------------------- -->
+  <section class="planner" aria-labelledby="plannerHeading">
+    <h1 id="plannerHeading">Plan a route to a role</h1>
+    <p class="section-lede">Pick where someone stands today and where they want to go. SkillPath traces the skill gap and the shortest way across it.</p>
+
+    <form id="plannerForm" class="planner-form">
+      <div class="field">
+        <label for="personSelect">Departing from</label>
+        <select id="personSelect" required>
+          <option value="" disabled selected>Loading people…</option>
+        </select>
+      </div>
+      <div class="route-glyph" aria-hidden="true">
+        <svg width="48" height="24" viewBox="0 0 48 24"><path d="M0 12 H40 M32 4 L42 12 L32 20" fill="none" stroke="currentColor" stroke-width="2" /></svg>
+      </div>
+      <div class="field">
+        <label for="jobSelect">Arriving at</label>
+        <select id="jobSelect" required>
+          <option value="" disabled selected>Loading roles…</option>
+        </select>
+      </div>
+      <button type="submit" class="btn-primary">Chart the route</button>
+    </form>
+  </section>
+
+  <!-- LOADING / EMPTY / ERROR STATES ------------------------------------ -->
+  <div id="loadingState" class="state-panel state-loading" hidden>
+    <div class="spinner" aria-hidden="true"></div>
+    <p>Tracing the graph…</p>
+  </div>
+
+  <div id="emptyState" class="state-panel state-empty">
+    <p>Choose a person and a target role above, then chart the route to see the skill gap, a suggested learning path, and people who've made a similar move.</p>
+  </div>
+
+  <div id="errorState" class="state-panel state-error" hidden>
+    <p id="errorMessage">Something went wrong.</p>
+  </div>
+
+  <!-- RESULTS ------------------------------------------------------------ -->
+  <section id="results" class="results" hidden>
+
+    <div class="results-summary">
+      <div class="match-dial" id="matchDial" aria-hidden="true">
+        <span id="matchPercent">—</span>
+      </div>
+      <div>
+        <h2 id="resultsHeading">Route summary</h2>
+        <p id="resultsSubheading" class="section-lede"></p>
+      </div>
+    </div>
+
+    <div class="route-track" id="routeTrack" aria-label="Required skills for this role"></div>
+
+    <div class="two-col">
+      <div>
+        <h3>Suggested route via similar transitions</h3>
+        <p class="section-lede small">Others who reached this role, and which of their skills bridged the gap.</p>
+        <ul id="similarTransitions" class="transition-list"></ul>
+      </div>
+      <div>
+        <h3>Shortest skill path</h3>
+        <p class="section-lede small">Pick two skills to see the closest graph route between them, prerequisite or related.</p>
+        <form id="skillPathForm" class="skill-path-form">
+          <select id="fromSkill"></select>
+          <span aria-hidden="true">→</span>
+          <select id="toSkill"></select>
+          <button type="submit" class="btn-secondary">Find path</button>
+        </form>
+        <div id="skillPathResult" class="skill-path-result"></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="page-footer">
+  <p>SkillPath · data layer: CognoDB (openCypher over Bolt) · <a href="https://console.cognodb.com" target="_blank" rel="noopener">console.cognodb.com</a></p>
+</footer>
+
+<script src="js/app.js"></script>
+</body>
+</html>
